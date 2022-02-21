@@ -71,7 +71,7 @@ console.log(hours, mins, secondsLeft);
 Showing the total data and changing bit of formats for easy user interface.
 
 ## Screenshots
-
+![2022-02-21_17-01-05](https://user-images.githubusercontent.com/42742924/154944975-aff91720-53db-4527-be66-a27567993c9a.png)
 ![firefox_2022-02-21_16-59-24](https://user-images.githubusercontent.com/42742924/154944715-1dfdf995-0ea6-4dac-ba5d-f91f5747e223.png)
 
 ## Tech Stack
