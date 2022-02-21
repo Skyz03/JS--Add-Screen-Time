@@ -1,70 +1,84 @@
 # JS--Add-Screen-Time
 
-This project is the sixteen JS-30 challenge where I learned about ```Destructuring Array```, ```Use of Offsets```, , ```Calculation of Walks```  and ```Application of dynamic text shadow```.
+This project is the eighteen JS-30 challenge where I learned about ```How to capture the time avaialble in the videos```, ```Convert them in seconds of integer using map function```, ```Math.floor``` , ```Use of Module Operators``` and ```Power of Reduce function ```.
 
 
 ## Demo
 
-[Click Here](https://skyz03.github.io/JS--Mouse-Move-Shadow/)
+[Click Here](https://skyz03.github.io/JS--Add-Screen-Time/)
 
 ## Features
 
 - Change of Spacing, Blurness & Color of Image As per input Element.
 
-- Use of Math.round
-- Use of offSetHeight and other
+- Calculation of Total Time in As much videos added in the future.
+- Use of data-time or any other related property.
+- Use of map function to converte the Node Sets data into integer using ```parse Float``` functionss.
+- Use of reduce function to calculate the total amount of values after colletion via map function.
+- Use of modulo to calculate the remaning time after converting into hours, mins and seconds.
 
 ## Lessons Learned
 
-As this is one of the third JS challenge, here I understood about the creation of variables & use them to change as per needs.
+As this is one of the 18th JS challenge, here I understood about the power of modulo, map, reduce functions to calulate different things such as.
 
-```CREATION OF INPUT VALUES => SETTING THEM IN CSS VARIABLES => USING JS TO CHANGE IT AS PER NEED```.
+```SELECT THE ELMENT => CHANGE THE DATA WHICH WE GET IN STRING INTO INTEGERS AND REDUCE TO CALCULATE THE TOTAL AMOUNT OF SECONDS => USE THE MODULO FUNCTION AND THEN USE IT TO CALC THE REMANING FROM THE HOURS CALCULATION AND MINS.```.
 
 ```
-:root {
-  --base: #ffc600;
-  --spacing: 10px;
-  --blur: 10px; // The variables of the change
-}
+HTML 
+<li data-time="5:43">
+   Video 1
+</li>
 
-// These are declared with the variables means they are going to change into when input change.
+JS
+// Selecting all the elements that has the attiribute data time in html 
+const timeNodes = Array.from(document.querySelectorAll('[data-time]'));
 
-img {
-  padding: var(--spacing);
-  background: var(--base);
-  filter: blur(var(--blur));
-}
+// First map getting the data in strings second one is destructuring it into diffrent own varialbes such as mins and secs. 
+const seconds = timeNodes
+  .map(node => node.dataset.time)
+  .map(timeCode => {
+    const [mins, secs] = timeCode.split(':').map(parseFloat);
+    //Parse float is converting that into ... integer as they are strings and keeping them in seprate variable..
+    return (mins * 60) + secs;
+    // this one is combining each mins and secs of value into one for each individual set of video
+  })
 
-function handleUpdate() {
-  const suffix = this.dataset.sizing || '';  // This is getting the suffix for sizing i.e. px.
-  document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)  // This is setting the property as we are selecting the document property and changing its value as per we get from the input above.
-
-  console.log(this.value);
-}
+  //This reduce is doing the total of each sets of mins and secs into one complete value.
+  .reduce((total, vidSeconds) => total + vidSeconds);
 
 
-// These are the codes that are lisiting to the change and updating the value by calling the function handleUpdate.
-inputs.forEach(input => input.addEventListener("change", handleUpdate));
-inputs.forEach(input => input.addEventListener("mousemove", handleUpdate));
+
+// This section is about converting the whole seconds into one hours minutes and seconds as per required 
+
+let secondsLeft = seconds;
+
+const hours = Math.floor(secondsLeft / (60 * 60)); //seconds divided by 60 into mins then divided by 60 takes it to hours.
+
+// The modulo is capturing the value after how many hours is calculated
+
+// Same goes with minutes and seconds 
+secondsLeft = secondsLeft % 3600;
+
+const mins = Math.floor(secondsLeft / 60);
+secondsLeft = secondsLeft % 60;
+
+console.log(seconds);
+console.log(hours, mins, secondsLeft);
 ```
-
-Here, the value of image is chaged as per the change in input values.
 
 ## Optimizations
 
-Can implement this in many places ==> plus use of local storage I think.
+Showing the total data and changing bit of formats for easy user interface.
 
 ## Screenshots
 
-![image](https://user-images.githubusercontent.com/42742924/152012492-e48b0802-a919-4015-896b-1153c1d93c7d.png)
+![image](https://user-images.githubusercontent.com/42742924/154944318-8c736c1a-2b14-48b4-92a0-cf1d296e94a8.png)
 
 ## Tech Stack
 
-**Client:** HTML, CSS/SCSS & JS
+**Client:** HTML & JS
 
 ## Documentation
 
-Learned about first creation, of input values & creation of the color variables in the :root and then selecting everthing inputs from JS 
-and adjusting as per the need of values in the in HTML like px and all.
-
+Learn more on array map and reduce function to understand more on this topics.
 # Notes 
