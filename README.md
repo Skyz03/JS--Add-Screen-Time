@@ -72,7 +72,7 @@ Showing the total data and changing bit of formats for easy user interface.
 
 ## Screenshots
 
-![image](https://user-images.githubusercontent.com/42742924/154944318-8c736c1a-2b14-48b4-92a0-cf1d296e94a8.png)
+![firefox_2022-02-21_16-59-24](https://user-images.githubusercontent.com/42742924/154944715-1dfdf995-0ea6-4dac-ba5d-f91f5747e223.png)
 
 ## Tech Stack
 
